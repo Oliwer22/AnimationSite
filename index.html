@@ -3,19 +3,78 @@
     <head>
         <title>Animation</title>
         <link rel="stylesheet" href="src/css/style.css">
-        
+
     </head>
-    
     <body>
-        <div class="container">
-            <div class="header">
-                <h1>A Animation page</h1>
-            </div>
+      <div class="perspective">
+        <label class="tab" for="tab-top">Front</label>
+        <label class="tab" for="tab-front">Main</label>
+        <label class="tab" for="tab-bottom">Back</label>
+        <input type="radio" name="tabs" id="tab-top" data-tab="top">
+        <input type="radio" name="tabs" id="tab-front" data-tab="front" checked>
+        <input type="radio" name="tabs" id="tab-bottom" data-tab="bottom"> 
 
-            <div class="content">
-                <h2>A 3D cude with some animation </h2>
-            </div>
+        <div class="cube">
+          <div class="tab-content fade-in" data-tab="top">
+                <div class="inner">
+                  <img class='svgs' src="svg/front.svg">
+                  <p style="padding:12px;">HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser.
+                  CSS (Cascading Style Sheets) is a style sheet language used for describing the look and formatting of a document written in HTML.
+                  JavaScript is a high-level, interpreted programming language that conforms to the ECMAScript specification.</p>
+                </div>
+                <div class="inner1" >
+                  <img class='svgs' src="svg/front1.svg">
+                  <p style="margin-top: -20px; padding: 12px;">Basics include HTML, CSS, and JavaScript. These are the building blocks of all websites.
+                  HTML helps us create the structure of a website, while CSS is used for styling. JavaScript, on the other hand, makes the website interactive.
+                  Together, these three technologies form the cornerstone of web development.</p>
+                </div>
+                <div class="inner2">
+                  <img class='gif' src="front-end-development.gif">
+                </div>
+              </div>
+              <div class="tab-content fade-in visible" data-tab="front">
+                <div class="maininner">
+                  <img class='svgs' src="200w.gif">
+                  <p style="margin-top: -20px; padding: 12px;">Programming is the process of creating a set of instructions that tell a computer how to perform a task. It can be done using various programming languages like Python, Java, C++, etc.</p>
+                </div>
+                <div class="maininner1">
+                  <img class='svgs' src="svg/programming1.svg">
+                  <p style="padding: 12px; margin-top: -20px;">Programming involves tasks such as analysis, generating algorithms, profiling algorithms' accuracy and resource consumption, and the implementation of algorithms in a chosen programming language (commonly referred to as coding).</p>
+                </div>
+              </div>
+              <div class="tab-content fade-in" data-tab="bottom">
+                  <div class="backinner">
+                    <h2>Backend Development</h2>
+                    <p>Backend development refers to server-side development. It focuses on databases, scripting, website architecture, and the algorithms that make a website function properly.</p>
+                  </div>
+                  <div class="backinner1">
+                    <h3>Common Backend Technologies:</h3>
+                    <ul>
+                      <li>Node.js</li>
+                      <li>Python (Django, Flask)</li>
+                      <li>Ruby on Rails</li>
+                      <li>Java (Spring)</li>
+                      <li>PHP (Laravel)</li>
+                      <li>.NET</li>
+                    </ul>
+                  </div>
 
-        </div>
+              </div>
+            </div>
+          </div>
     </body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="src/js/script.js"></script>
+<script>  
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const tabId = this.getAttribute('for');
+    const content = document.querySelector(`.tab-content[data-tab="${tabId.split('-')[1]}"]`);
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.classList.remove('visible');
+    });
+    content.classList.add('visible');
+  });
+});
+</script>
